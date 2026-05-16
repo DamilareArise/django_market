@@ -1,0 +1,54 @@
+{% extends "common.html" %}
+    {% block title %}Django Market - Home{% endblock title %}
+    {% load static %}
+
+    {% block content %}
+        <h1 class="h5 my-2 container">Welcome back <span class="text-color">{{user|upper}}</span> - HOME PAGE</h1>
+        <div class="container">
+            <a href="{% url "add-product" %}" class="btn btn-sm btn-dark">Add Product</a>
+            <div class="row my-2">
+                {% for product in products %}
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        {% if product.image %}
+                            <img src="{{product.image.url}}" alt="" class="card-image">
+                        {% else %}
+                            <img src="" alt="" class="card-image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.title}}</h5>
+                            <p class="card-text">
+                                <p>{{product.description}}</p>
+                                <span>${{product.price}} - {{product.quantity}} left</span>
+                            </p>
+                            <a href="" class="btn btn-sm btn-dark">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
