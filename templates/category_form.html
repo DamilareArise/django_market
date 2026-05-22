@@ -8,8 +8,7 @@
         <div class="container my-5">
             
             <form method="post" enctype="multipart/form-data" class="container col-md-5 border p-3">
-                <h4 class="text-center my-2">Add Product</h4>
-                <a href="{% url "add-category" %}" class="btn btn-sm btn-dark my-3">Add Category</a>
+                <h4 class="text-center my-2">Add Category</h4>
                 {% csrf_token %}
                 {{form|crispy}}
                 <button class="btn btn-sm btn-dark">submit</button>

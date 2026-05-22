@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "productApp"
+    "productApp",
+    'crispy_forms',
+    "crispy_bootstrap5"
 ]
 
 MIDDLEWARE = [
@@ -132,6 +134,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / 'media'
-
-
 # Read up on the relationship between views, urls, forms, model, and Template
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

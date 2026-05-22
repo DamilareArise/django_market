@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product
+from .models import Product, ProductCategory
 
 
 
@@ -14,3 +14,13 @@ class ProductForm(forms.ModelForm):
             "category",
             "image"
         ]
+        
+class CategoryForm(forms.ModelForm):
+    name = forms.CharField(max_length=50, required=True)
+    class Meta:
+        model = ProductCategory
+        fields = [
+            "name",
+            "description"
+        ]
+        

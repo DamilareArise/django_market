@@ -3,12 +3,12 @@
     {% load static %}
 
     {% block content %}
-        <h1 class="h5 my-2 container">Welcome back <span class="text-color">{{user|upper}}</span> - HOME PAGE</h1>
         <div class="container">
-            <h3 class="text-center my-3">Featured Products</h3>
+            <h3 class="text-center my-3">Products</h3>
+            <a href="{% url "add-product" %}" class="btn btn-sm btn-dark">Add Product</a>
             <div class="row my-2">
                 {% for product in products %}
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-3 my-2">
                     <div class="card">
                         {% if product.image %}
                             <img src="{{product.image.url}}" alt="" class="card-img-top">
@@ -22,33 +22,12 @@
                                 <span>${{product.price}} - {{product.quantity}} left</span>
                             </p>
                             <a href="" class="btn btn-sm btn-dark">Add to cart</a>
+                            <a href="" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="" class="btn btn-sm btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-            </div>
         </div>
-        
-    {% endblock content %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    {% endblock %}
