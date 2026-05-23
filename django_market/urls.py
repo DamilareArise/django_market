@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from productApp.views import homeView, aboutView, AddProductView, AddCategoryView, AllProductView
+from productApp.views import homeView, aboutView, AddProductView, AddCategoryView, AllProductView, GetProductView, DeleteProductView, EditProductView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,7 +27,10 @@ urlpatterns = [
     path("about/", aboutView, name="about"),
     path("add-product/", AddProductView, name="add-product"),
     path("add-category/", AddCategoryView, name="add-category"),
-    path("shop/", AllProductView, name="shop")
+    path("shop/", AllProductView, name="shop"),
+    path("get-product/<int:id>/", GetProductView, name="get-product"),
+    path("delete-product/<int:id>/", DeleteProductView, name="delete-product"),
+    path("edit-product/<int:id>/", EditProductView, name='edit-product')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,23 @@
+{% extends "common.html" %}
+    {% block title %}Django Market - {{product.title}}{% endblock title %}
+    {% load static %}
+
+    {% block content %}
+        <div class="container my-4 p-3 ">
+            <div class="col-7 row border m-auto p-3">
+                <div class="col-4">
+                    {% if product.image %}
+                        <img src="{{product.image.url}}" alt="" class="card-img-top">
+                    {% else %}
+                        <img src="" alt="{{product.title}}">
+                    {% endif %}
+                </div>
+                <div class="col-8">
+                    <h3>{{product.title}}</h3>
+                    <p><b>Price</b>: ${{product.price}} - {{product.quantity}} left</p>
+                    <p>{{product.description}}</p>
+                    <button class="btn btn-dark w-100">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

@@ -9,21 +9,23 @@
             <div class="row my-2">
                 {% for product in products %}
                 <div class="col-12 col-md-3">
-                    <div class="card">
-                        {% if product.image %}
-                            <img src="{{product.image.url}}" alt="" class="card-img-top">
-                        {% else %}
-                            <img src="" alt="" class="card-img-top">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{product.title}}</h5>
-                            <p class="card-text">
-                                <p>{{product.description}}</p>
-                                <span>${{product.price}} - {{product.quantity}} left</span>
-                            </p>
-                            <a href="" class="btn btn-sm btn-dark">Add to cart</a>
+                    <a href="{% url "get-product" product.id %}" class="text-black text-decoration-none">
+                        <div class="card">
+                            {% if product.image %}
+                                <img src="{{product.image.url}}" alt="" class="card-img-top">
+                            {% else %}
+                                <img src="" alt="" class="card-img-top">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{product.title}}</h5>
+                                <p class="card-text">
+                                    <p>{{product.description}}</p>
+                                    <span>${{product.price}} - {{product.quantity}} left</span>
+                                </p>
+                                <a href="" class="btn btn-sm btn-dark">Add to cart</a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 {% endfor %}
             </div>

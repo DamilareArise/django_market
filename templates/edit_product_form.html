@@ -1,0 +1,16 @@
+{% extends "common.html" %}
+    {% block title %}Django Market - Edit Product{% endblock title %}
+    {% load static %}
+    {% load crispy_forms_tags %}
+
+
+    {% block content %}
+        <div class="container my-5">
+            <form method="post" enctype="multipart/form-data" class="container col-md-5 border p-3">
+                {% csrf_token %}
+                <h4 class="text-center my-2">Edit Product</h4>
+                {{form|crispy}}
+                <button class="btn btn-sm btn-dark">submit</button>
+            </form>
+        </div>
+    {% endblock %}
