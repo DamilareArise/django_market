@@ -5,7 +5,9 @@
     {% block content %}
         <div class="container">
             <h3 class="text-center my-3">Products</h3>
+            {% if request.user.is_authenticated and request.user.is_staff %}
             <a href="{% url "add-product" %}" class="btn btn-sm btn-dark">Add Product</a>
+            {% endif %}
             <div class="row my-2">
                 {% for product in products %}
                 <div class="col-12 col-md-3 my-2">
@@ -24,12 +26,14 @@
                                 </p>
                                 <a href="" class="btn btn-sm btn-dark">Add to cart</a>
 
+                                {% if request.user.is_authenticated and request.user.is_staff %}
                                 <a href="{% url "edit-product" product.id %}" class="btn btn-sm btn-primary">Edit</a>
                                  
                                 <!-- Button trigger modal for delete -->
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct-{{product.id}}">
                                 Delete
                                 </button>
+                                {% endif %}
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="deleteProduct-{{product.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

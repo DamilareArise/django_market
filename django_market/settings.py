@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "productApp",
+    "userApp",
     'crispy_forms',
     "crispy_bootstrap5"
 ]
@@ -137,3 +138,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Read up on the relationship between views, urls, forms, model, and Template
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
