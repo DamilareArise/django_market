@@ -3,6 +3,7 @@ from .models import Product
 from .forms import ProductForm, CategoryForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .utils import is_staff_user
+from django.contrib import messages
 # Create your views here.
 
 def homeView(request):
@@ -30,6 +31,9 @@ def AddProductView(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, "Product created.")
+        else:
+            messages.error(request, "Error occured while creating a product")
         
         return redirect("home")
     
@@ -49,6 +53,9 @@ def AddCategoryView(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Category created.")
+        else:
+            messages.error(request, "Error occured while creating a category")
         
         return redirect('add-product')
     
@@ -88,6 +95,7 @@ def GetProductView(request, id):
 def DeleteProductView(request, id):
     product = get_object_or_404(Product, id=id)
     product.delete()
+    messages.success(request, "Product deleted.")
     
     return redirect("shop")
 
@@ -99,6 +107,9 @@ def EditProductView(request, id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
+            messages.success(request, "Product Edited.")
+        else:
+            messages.error(request, "Error occured while editing a product")
             
         return redirect("shop")
     
