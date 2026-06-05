@@ -29,14 +29,15 @@
                 </li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
+                    <a href="{% url "password_change" %}" class="nav-link" >Change Password</a>
+                </li>
+
+                <li class="nav-item">
                     <form action="{% url "logout" %}" method="post">
                         {% csrf_token %}
                         <button class="btn btn-danger me-2">Log out</button>
                     </form>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url "password_change" %}" class="btn btn-dark" >Change Password</a>
-                </li>
+                </li>    
                 {% else %}
                 <li class="nav-item">
                 <a class="btn btn-dark" href="{% url "login" %}">Log In</a>
@@ -47,6 +48,11 @@
             </div>
         </div>
     </nav>
+    {% if messages %}
+        {% for message in  messages %}
+           <p class="alert alert-info fixed-bottom ms-auto me-3" style="width: fit-content;">{{message}}</p> 
+        {% endfor %}
+    {% endif %}
 
     {% block content %}{% endblock content %}
 
